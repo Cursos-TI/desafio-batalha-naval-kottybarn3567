@@ -1,41 +1,38 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+// declarando constantes pra valores mais acessiveis sem erros.
+#define linhas 10
+#define colunas 10
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
-    // ====================================================================================================================
+    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
+    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
+    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
+    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
-    /*
-    int campoBatalhaNaval[10][10];
+    int campoBatalhaNaval[linhas][colunas] = {0}; // deixa todos os valores como 0
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) { // vai de 0 ate 9, entao nao podemos usar <=
-                campoBatalhaNaval[i][j] = 0;
-            }
-        }
-    */
-
-    // MANEIRA SIMPLIFICADA
-
-    int campoBatalhaNaval[10][10] = {0};
-
-    for (int x = 2; x < 2 + 3; x++) {
+    for (int x = 2; x < 2 + 3; x++) { // navio na vertical
         campoBatalhaNaval[x][1] = 3;
     }
 
-    for (int x = 6; x < 6 + 3; x++) {
+    for (int x = 6; x < 6 + 3; x++) { // navio na horizontal
         campoBatalhaNaval[8][x] = 3;
     }
 
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
+    for (int x = 1, y = 8; x < 1 + 4; x++, y--) { // navio na diagonal
+        campoBatalhaNaval[x][y] = 3;
+    }
+
+    for (int x = 6, y = 1; x < 6 + 3; x++, y++) { // navio na diagonal
+        campoBatalhaNaval[x][y] = 3;
+    }
+
+    printf("\n\n");
+
+    for (int i = 0; i < linhas; i++) { // mostra o "campo"
+        for (int j = 0; j < colunas; j++) {
             printf("%d \t", campoBatalhaNaval[i][j]);
         }
         printf("\n\n");
@@ -43,5 +40,3 @@ int main() {
 
     return 0;
 }
-
-// ====================================================================================================================
